@@ -264,6 +264,8 @@ System.out.println( "The list is " + x );
  while( y.hasNext( ) )
  System.out.print( y.next( ) + " " );
  System.out.println( );
+ 
+ 
  }
 
 
