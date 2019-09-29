@@ -258,7 +258,17 @@ on time
     System.out.println("\n\n\n\n");
     System.out.println(test_pasajero.toString());
 */
+/*
+     Probando ordenador por precios
+     */
 
-    
-}
+  PriceSorter sorter = new PriceSorter();
+        sorter.sort(Todos_los_vuelos);
+        for(int i:sorter.getArray()){
+            System.out.print(i);
+            System.out.print(" ");
+        }
+        
+         
+        }
 }
