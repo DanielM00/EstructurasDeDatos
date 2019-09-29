@@ -263,12 +263,21 @@ on time
      */
 
   PriceSorter sorter = new PriceSorter();
+  
         sorter.sort(Todos_los_vuelos);
         for(int i:sorter.getArray()){
             System.out.print(i);
-            System.out.print(" ");
+            System.out.println(" ");
         }
         
+        for(Vuelo i:sorter.getTodos_los_vuelos()){
+            System.out.print(i);
+            System.out.println( "\n\n\n\n" );
+        }
+        
+        
+        
+ 
          
         }
 }

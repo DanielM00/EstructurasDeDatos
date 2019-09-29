@@ -11,16 +11,15 @@ package cadenitas;
  */
 public class PriceSorter {
     
-    Chain<Vuelo> Todos_los_vuelos;
+    public Chain<Vuelo> Todos_los_vuelos;
     public int array[];
     private int length;
- 
-    /**
-     *
-     * @param inputArr
-     * @param Todos_los_vuelos
-     */
-    public void sort(Chain<Vuelo> Todos_los_vuelos) {
+  
+    public void sort(Chain<Vuelo> Vuelos) {
+        
+       
+        Todos_los_vuelos=Vuelos;
+        
         
         int [] inputArr = new int [Todos_los_vuelos.size];
         
@@ -32,10 +31,10 @@ public class PriceSorter {
         }
         this.array = inputArr;
         length = inputArr.length;
-        quickSort(0, length - 1);
+        quickSort(0, Vuelos.size() - 1, Todos_los_vuelos);
     }
  
-    private void quickSort(int lowerIndex, int higherIndex) {
+    private void quickSort(int lowerIndex, int higherIndex, Chain<Vuelo> Aviones) {
          
         int i = lowerIndex;
         int j = higherIndex;
@@ -64,15 +63,24 @@ public class PriceSorter {
         }
         // call quickSort() method recursively
         if (lowerIndex < j)
-            quickSort(lowerIndex, j);
+            quickSort(lowerIndex, j, Aviones);
         if (i < higherIndex)
-            quickSort(i, higherIndex);
+            quickSort(i, higherIndex, Aviones);
     }
  
     private void exchangeNumbers(int i, int j) {
+        Vuelo temp1 = Todos_los_vuelos.get(i);
+        Vuelo temp2 = Todos_los_vuelos.get(j);
+        Todos_los_vuelos.add(j+1, temp1);
+        Todos_los_vuelos.remove(j); 
+        Todos_los_vuelos.add(i+1, temp2);
+        Todos_los_vuelos.remove(i);
+      
         int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+        
+        
     }
     
     
@@ -91,4 +99,10 @@ public class PriceSorter {
     public int[] getArray() {
         return array;
     }
+
+    public Chain<Vuelo> getTodos_los_vuelos() {
+        return Todos_los_vuelos;
+    }
+    
+    
 }
