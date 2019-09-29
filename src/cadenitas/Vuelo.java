@@ -16,6 +16,7 @@ import java.util.GregorianCalendar;
 public class Vuelo {
     String Ciudad_partida;
     String Ciudad_llegada;
+    int Precio = 0;//Agregado en version 2.0
     
     GregorianCalendar Tiempo_salida;
     GregorianCalendar Tiempo_llegada;
@@ -32,11 +33,12 @@ public class Vuelo {
         return horario;
     }
     
+    //Mes en la clase calendar va de 0 a 11,resulta mas intuitivo usar 1 a 12,a esto se deben los +1 y -1
     
     public String imprimir_horario(GregorianCalendar horario){
         int year = horario.get(Calendar.YEAR);
-        int mes = horario.get(Calendar.MONTH);
-        int dia = horario.get(Calendar.DAY_OF_MONTH);
+        int mes = horario.get(Calendar.MONTH) + 1 ; 
+        int dia = horario.get(Calendar.DAY_OF_MONTH); 
         int hora = horario.get(Calendar.HOUR_OF_DAY);
         int minuto = horario.get(Calendar.MINUTE);
         
@@ -115,8 +117,18 @@ public class Vuelo {
     }
     
     
+    //__________________________________________________
+    //Version 2 : El atributo precio,sus set y get ,y una nueva forma de constructor se han creado.
     
-    
+        public void SetPrecio(int Precio){
+            this.Precio = Precio;  
+    }
+        
+        public int getPrecio(){
+            return Precio;  
+    }
+        
+        //____________________________________________-
     
     
     public Vuelo(){
@@ -139,6 +151,17 @@ public class Vuelo {
     }
     
     
+        public Vuelo(String Ciudad_partida,String Ciudad_llegada, GregorianCalendar Tiempo_salida,GregorianCalendar Tiempo_llegada ,String Codigo ,String Estado,int Precio){
+        this.SetCiudad_partida(Ciudad_partida);
+        this.SetCiudad_llegada(Ciudad_llegada);
+        this.SetTiempo_salida(Tiempo_salida);
+        this.SetTiempo_llegada(Tiempo_llegada);
+        this.SetCodigo(Codigo);
+        this.SetEstado(Estado);
+        this.SetPrecio(Precio);
+    }
+    
+    
     @Override
     public String toString(){
         return 
@@ -149,7 +172,8 @@ public class Vuelo {
         "Hora de llegada: " +imprimir_horario(this.Tiempo_llegada) +"\n" +
         
         "Codigo del Vuelo: " +this.Codigo +"\n" +
-        "Estado del vuelo: "+ this.Estado;
+        "Estado del vuelo: "+ this.Estado +"\n" +
+        "Precio actual : "+ this.Precio;
     }
     
     
